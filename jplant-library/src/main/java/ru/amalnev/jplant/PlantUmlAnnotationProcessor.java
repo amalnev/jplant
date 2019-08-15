@@ -41,10 +41,13 @@ public class PlantUmlAnnotationProcessor extends AbstractProcessor
             inheritanceScanner.visit(element.asType());
         });
 
+        final String umlSourceCode = programModel.toString();
+        System.out.println(umlSourceCode);
+
         try (final FileOutputStream outputStream = new FileOutputStream(outputFilePath))
         {
             Writer writer = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
-            writer.append(programModel.toString());
+            writer.append(umlSourceCode);
             writer.flush();
             writer.close();
         }

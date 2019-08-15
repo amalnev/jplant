@@ -1,0 +1,3 @@
+#jPlant library
+
+Generates PlantUml diagrams from Java source code. Simply add the library as a Maven dependency, or put the library jar to the classpath, annotate a class or an interface with @PlantUml annotation and that class will be included in the UML diagram. Diagram generation is performed by Java compiler prior to bytecode generation, so this library is compile-time-only dependency, it's presence is not needed at program runtime. Internally the library uses code generation techniques similar to lombok: it registers a custom annotation processor with the Java compiler and uses Java language model API to perform source code analysis. 

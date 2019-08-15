@@ -44,16 +44,19 @@ public class PlantUmlAnnotationProcessor extends AbstractProcessor
         final String umlSourceCode = programModel.toString();
         System.out.println(umlSourceCode);
 
-        try (final FileOutputStream outputStream = new FileOutputStream(outputFilePath))
+        if(outputFilePath != null && outputFilePath.length() > 0)
         {
-            Writer writer = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
-            writer.append(umlSourceCode);
-            writer.flush();
-            writer.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
+            try (final FileOutputStream outputStream = new FileOutputStream(outputFilePath))
+            {
+                Writer writer = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
+                writer.append(umlSourceCode);
+                writer.flush();
+                writer.close();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
 
         return true;
